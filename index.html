@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <link href="main.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="app.js" type="text/javascript"></script>
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        <div>
+            <input type="number" ng-model="data" id="data"><br>
+            <input type="number" ng-model="result" id="result"><br>
+        </div>
+        <p></p>
+        <div>
+            <button id="clr">CLR</button>
+            <button>^x</button>
+            <button>^2</button>
+            <button>+</button><br>
+            <button onclick="addNum(1)">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>-</button><br>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>x</button><br>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>÷</button><br>
+            <button>.</button>
+            <button>0</button>
+            <button>+/-</button>
+            <button id="equal">=</button>
+        </div>
+    </div>
+    <p>
+        Test data display: {{data}}<br>
+        Test result display: {{result}}
+    </p>
+</body>
+</html>
