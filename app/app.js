@@ -1,68 +1,79 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
     $scope.upperDisplay = null;
-    $scope.input = '';
-    function save() {
-        if ($scope.upperDisplay === null) {
-            $scope.upperDisplay = parseFloat($scope.underDisplay);
-        };
-    };
-    function posToNeg(x) {
-        return -Math.abs(x);
+    $scope.underDisplay = '';
+    $scope.save = function() {
+        $scope.upperData = $scope.underData;
+        $scope.upperDisplay = $scope.upperData + '' + $scope.opr;
     };
     
+    //display number accordingly when number buttons are clicked
     $scope.addNum = function(x) {
-        $scope.input += ''+ x;
-        $scope.underDisplay = parseFloat($scope.input);
-    };
-    
-    $scope.sumButton = function() {
-        save();
-        $scope.opr = '+';
-        $scope.input = 0;
-        $scope.underDisplay = parseFloat($scope.input);
-    };
-    $scope.subButton = function() {
-        save();
-        $scope.opr = '-';
-        $scope.input = 0;
-        $scope.underDisplay = parseFloat($scope.input);
-    };
-    $scope.mulButton = function() {
-        save();
-        $scope.opr = '*';
-        $scope.input = 0;
-        $scope.underDisplay = parseFloat($scope.input);
-    };
-    $scope.divButton = function() {
-        save();
-        $scope.opr = '/';
-        $scope.input = 0;
-        $scope.underDisplay = parseFloat($scope.input);
-    };
-    $scope.clrButton = function() {
-        $scope.upperDisplay = null;
-        $scope.input = 0;
-        $scope.underDisplay = parseFloat($scope.input);
-    };
-    
-    $scope.dotButton = function() {
-        if ($scope.input.indexOf('.') <= 0) {
-            $scope.input += '.' ;
-            $scope.underDisplay = parseFloat($scope.input);
+        if (x === 0 && $scope.underDisplay === ''){            
         }else {
-            $scope.underDisplay = parseFloat($scope.input);
-        };
-    };
-    $scope.pos_negButton = function() {
-        if ($scope.input >= 0) {
-            $scope.input = -Math.abs($scope.input);
-            $scope.underDisplay = parseFloat($scope.input);
-        }else if ($scope.input < 0) {
-            $scope.input = Math.abs($scope.input);
-            $scope.underDisplay = Math.abs($scope.input);
+        $scope.underDisplay += ''+ x;
+        $scope.underData = parseFloat($scope.underDisplay);
         }
     };
+    //display changes when user click +
+    $scope.sumButton = function() {
+        $scope.opr = '+';
+        $scope.save();
+        $scope.underDisplay = '';
+    };
+    
+    //display changes when user click -
+    $scope.subButton = function() {
+        $scope.opr = '-';
+        $scope.save();
+        $scope.underDisplay = '';
+    };
+    
+    //display changes when user click x
+    $scope.mulButton = function() {
+        $scope.opr = '*';
+        $scope.save();
+        $scope.underDisplay = '';
+    };
+    
+    //display changes when user click /
+    $scope.divButton = function() {
+        $scope.opr = '/';
+        $scope.save();
+        $scope.underDisplay = '';
+    };
+    
+    //display changes when user click CLR (clear)
+    $scope.clrButton = function() {
+        $scope.upperData = 0;
+        $scope.upperDisplay = '';
+        $scope.underData = 0;
+        $scope.underDisplay = '';
+    };
+    
+    //display changes when user click .
+    $scope.dotButton = function() {        
+        if ($scope.underDisplay !== '' && $scope.underDisplay.indexOf('.') <= 0) {
+            $scope.underDisplay += '.' ;
+            $scope.underData = parseFloat($scope.underDisplay);
+        }else if ($scope.underDisplay === '' && $scope.underDisplay.indexOf('.') <= 0) {
+            $scope.underDisplay = 0 + '.';   
+            $scope.underData = parseFloat($scope.underDisplay);
+        };   
+    };
+    
+    //display changes when user click +/-
+    $scope.pos_negButton = function() {
+        if ($scope.underDisplay > 0) {
+            $scope.underData = -Math.abs($scope.underData);
+            $scope.underDisplay = parseFloat($scope.underData);
+        }else if ($scope.underData < 0) {
+            $scope.underData = Math.abs($scope.underData);
+            $scope.underDisplay = Math.abs($scope.underData);
+        }else {}      
+    };
+    
+    //calculating functions
     $scope.sum = function(x, y) {
         return x + y;
     };
