@@ -1,8 +1,10 @@
 var app = angular.module('myApp', []);
 
 app.controller('MyController', function($scope) {
-    var result;
-    var oprt;
+    
+    $scope.opr = function() {
+        
+    };
     $scope.sum = function(x, y) {
         return x + y;
     };
@@ -15,6 +17,20 @@ app.controller('MyController', function($scope) {
     $scope.divide = function(x, y) {
         return (y === 0) ? 'Error' : x / y;
     };
+    $scope.equal = function(x, opr, y) {
+        if(opr === '+') {
+            return $scope.sum(x, y);
+        }else if(opr === '-') {
+            return $scope.subtract(x, y);            
+        }else if(opr === '*') {
+            return $scope.multiply(x, y);
+        }else if(opr === '/') {
+            return $scope.divide(x, y);            
+        };
+    };
+    $scope.power = function(x, y) {
+        return Math.pow(x, y);
+    }
 });
 describe('myController function', function() {
 
@@ -25,14 +41,14 @@ describe('myController function', function() {
             $scope = $rootScope.$new();
             $controller('MyController', {$scope: $scope});
         }));
-        it('should define & add 2 numbers correctly', function() {
+        it('should be defined & add 2 numbers correctly', function() {
             expect($scope.sum()).toBeDefined();
             expect($scope.sum(2, 3)).toBe(5);
             expect($scope.sum(-2, -3)).toBeLessThan(0);
             expect($scope.sum(-2, 3)).toBeGreaterThan(0);
             expect($scope.sum(2, -3)).toBeLessThan(0);
         });
-        it('should define & subtract 2 number correctly', function() {
+        it('should be defined & subtract 2 number correctly', function() {
             expect($scope.subtract()).toBeDefined();
             expect($scope.subtract(5, 3)).toBe(2);
             expect($scope.subtract(3, 5)).toBeLessThan(0);
@@ -40,13 +56,13 @@ describe('myController function', function() {
             expect($scope.subtract(-3, -5)).toBeGreaterThan(0);
             expect($scope.subtract(3, -5)).toBeGreaterThan(0);
         });
-        it('should define & multiply 2 number correctly', function() {
+        it('should be defined & multiply 2 number correctly', function() {
             expect($scope.multiply()).toBeDefined();
             expect($scope.multiply(2, 3)).toBe(6);
             expect($scope.multiply(-2, 3)).toBeLessThan(0);
             expect($scope.multiply(-2, -3)).toBeGreaterThan(0);
         });
-        it('should define & divide 2 number correctly', function() {
+        it('should be defined & divide 2 number correctly', function() {
             expect($scope.divide()).toBeDefined();
             expect($scope.divide(6, 3)).toBe(2);
             expect($scope.divide(6, 0)).toBe('Error');
@@ -54,7 +70,14 @@ describe('myController function', function() {
             expect($scope.divide(0, 6)).toBe(0);
         });
         it('should be defined & display result', function() {
-            expect($scope.equal()).toBeDefined();
+            expect($scope.equal(2, '+', 3)).toBe(5);
+            expect($scope.equal(2, '-', 3)).toBe(-1);
+            expect($scope.equal(2, '*', 3)).toBe(6);
+            expect($scope.equal(6, '/', 2)).toBe(3);
+            expect($scope.equal(6, '/', 0)).toBe('Error');
+        });
+        it('should be defined & display x^y correctly', function() {
+            expect($scope.power(2, 3)).toBe(8);
         });
     });
 });
