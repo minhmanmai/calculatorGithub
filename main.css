@@ -1,4 +1,4 @@
-button {
+input[type="button"] {
     color: #ff9900;
     border-radius: .5em;
     border: 1px solid #ff9900;
@@ -12,7 +12,7 @@ button {
     font-size: 1em;
     font-family: Verdana, Geneva, sans-serif;
 }
-button:hover {
+input[type="button"]:hover {
     color: #fff;
     background-color: #ff9900;
     -webkit-transition-duration: 0.2s;
@@ -20,12 +20,19 @@ button:hover {
     cursor: pointer;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
-button:active {
+input[type="button"]:active {
     background-color: #ff9900;
     box-shadow: 0 2px #ddd;
     transform: translate(2px, 2px);
 }
 input[type="number"] {
+    text-align: right;
+    color: #ff9900;
+    background-color: #fff;
+    height: 40px;
+    width: 272px;
+}
+input[type="text"] {
     text-align: right;
     color: #ff9900;
     background-color: #fff;

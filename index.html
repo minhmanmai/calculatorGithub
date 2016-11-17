@@ -3,40 +3,40 @@
         <title>Calculator</title>
         <link href="main.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="app.js" type="text/javascript"></script>
+        <script src="app/app.js" type="text/javascript"></script>
     </head>
     <body ng-app="myApp" ng-controller="myCtrl">
         <div>
-            <input type="number" ng-model="data" id="data"><br>
-            <input type="number" ng-model="result" id="result"><br>
+            <input type="text" ng-model="upperDisplay" id="data"><br>
+            <input type="text" ng-model="underDisplay" id="result" readonly=""><br>
         </div>
         <p></p>
         <div>
-            <button id="clr">CLR</button>
-            <button>^x</button>
-            <button>^2</button>
-            <button>+</button><br>
-            <button onclick="addNum(1)">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>-</button><br>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>x</button><br>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>÷</button><br>
-            <button>.</button>
-            <button>0</button>
-            <button>+/-</button>
-            <button id="equal">=</button>
+            <input type="button" ng-click="clrButton()" value="CLR"/>
+            <input type="button" ng-click="" value="^x" />
+            <input type="button" ng-click="" value="^2" />
+            <input type="button" ng-click="sumButton()" value="+" /><br>
+            <input type="button" ng-click="addNum(1)" value="1"/>
+            <input type="button" ng-click="addNum(2)" value="2" />
+            <input type="button" ng-click="addNum(3)" value="3"/>
+            <input type="button" ng-click="subButton()" value="-" /><br>
+            <input type="button" ng-click="addNum(4)" value="4" />
+            <input type="button" ng-click="addNum(5)" value="5" />
+            <input type="button" ng-click="addNum(6)" value="6" />
+            <input type="button" ng-click="mulButton()" value="x" /><br>
+            <input type="button" ng-click="addNum(7)" value="7" />
+            <input type="button" ng-click="addNum(8)" value="8" />
+            <input type="button" ng-click="addNum(9)" value="9" />
+            <input type="button" ng-click="divButton()" value="/" /><br>
+            <input type="button" ng-click="dotButton()" value="." />
+            <input type="button" ng-click="addNum(0)" value="0" />
+            <input type="button" ng-click="pos_negButton()" value="+/-" />
+            <input type="button" id="equal" value="="/>
         </div>
-    </div>
-    <p>
-        Test data display: {{data}}<br>
-        Test result display: {{result}}
-    </p>
-</body>
+        <p>
+        upperDisplay {{upperDisplay}}<br>
+        result {{result}}<br>
+        underDisplay {{underDisplay}}
+        </p>
+    </body>
 </html>

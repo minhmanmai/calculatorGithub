@@ -13,7 +13,7 @@ app.controller('MyController', function($scope) {
         return x * y;
     };
     $scope.divide = function(x, y) {
-        return (y === 0) ? 'Cannot divide by 0' : x / y;
+        return (y === 0) ? 'Error' : x / y;
     };
 });
 describe('myController function', function() {
@@ -49,7 +49,7 @@ describe('myController function', function() {
         it('should define & divide 2 number correctly', function() {
             expect($scope.divide()).toBeDefined();
             expect($scope.divide(6, 3)).toBe(2);
-            expect($scope.divide(6, 0)).toBe('Cannot divide by 0');
+            expect($scope.divide(6, 0)).toBe('Error');
             expect($scope.divide(3, 6)).toBeLessThan(1);
             expect($scope.divide(0, 6)).toBe(0);
         });
