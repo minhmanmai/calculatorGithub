@@ -98,8 +98,7 @@ app.controller('myCtrl', function($scope) {
             alert('Cannot divide by 0');
         } else {
             return   x / y;
-        };
-        
+        };        
     };    
     
     //square function
@@ -123,6 +122,5 @@ app.controller('myCtrl', function($scope) {
         }else {
             return $scope.underDisplay = $scope.underData;
         };
-    };
- 
+    }; 
 });
