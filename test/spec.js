@@ -38,7 +38,7 @@ app.controller('MyController', function($scope) {
     //exponent function to be tested
     $scope.power = function(x, y) {
         return Math.pow(x, y);
-    }
+    };
 });
 describe('myController function', function() {
 

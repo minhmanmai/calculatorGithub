@@ -7,36 +7,40 @@
     </head>
     <body ng-app="myApp" ng-controller="myCtrl">
         <div>
-            <input type="text" ng-model="upperDisplay" id="data"><br>
-            <input type="text" ng-model="underDisplay" id="result" readonly=""><br>
+            <input type="text" ng-model="upperDisplay" id="upperDisplay"><br>
+            <input type="text" ng-model="underDisplay" id="underDisplay" readonly=""><br>
         </div>
         <p></p>
         <div>
             <input type="button" ng-click="clrButton()" value="CLR"/>
-            <input type="button" ng-click="" value="^x" />
-            <input type="button" ng-click="" value="^2" />
-            <input type="button" ng-click="sumButton()" value="+" /><br>
+            <input type="button" ng-click="power()" value="^2" />
+            <input type="button" ng-click="equalButton()" id="equal" value="="/><br>
             <input type="button" ng-click="addNum(1)" value="1"/>
             <input type="button" ng-click="addNum(2)" value="2" />
             <input type="button" ng-click="addNum(3)" value="3"/>
-            <input type="button" ng-click="subButton()" value="-" /><br>
+            <input type="button" ng-click="addButton()" value="+" /><br>
             <input type="button" ng-click="addNum(4)" value="4" />
             <input type="button" ng-click="addNum(5)" value="5" />
             <input type="button" ng-click="addNum(6)" value="6" />
-            <input type="button" ng-click="mulButton()" value="x" /><br>
+            <input type="button" ng-click="subButton()" value="-" /><br>
             <input type="button" ng-click="addNum(7)" value="7" />
             <input type="button" ng-click="addNum(8)" value="8" />
             <input type="button" ng-click="addNum(9)" value="9" />
-            <input type="button" ng-click="divButton()" value="/" /><br>
+            <input type="button" ng-click="mulButton()" value="x" /><br>
             <input type="button" ng-click="dotButton()" value="." />
             <input type="button" ng-click="addNum(0)" value="0" />
             <input type="button" ng-click="pos_negButton()" value="+/-" />
-            <input type="button" id="equal" value="="/>
+            <input type="button" ng-click="divButton()" value="/" /><br>
         </div>
         <p>
-        upperDisplay {{upperDisplay}}<br>
-        result {{result}}<br>
-        underDisplay {{underDisplay}}
+        upperData {{upperData}}<br>
+        upperData {{upperDisplay}}<br>
+        opr {{opr}}<br>
+        underDisplay {{underDisplay}}<br>
+        underData {{underData}}<br>
+        expression {{upperData}} with {{underData}}
         </p>
+        <script>
+        </script>
     </body>
 </html>

@@ -1,45 +1,53 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
+    
+    //initialize the displays
     $scope.upperDisplay = null;
     $scope.underDisplay = '';
-    $scope.save = function() {
-        $scope.upperData = $scope.underData;
-        $scope.upperDisplay = $scope.upperData + '' + $scope.opr;
-    };
     
     //display number accordingly when number buttons are clicked
     $scope.addNum = function(x) {
-        if (x === 0 && $scope.underDisplay === ''){            
-        }else {
-        $scope.underDisplay += ''+ x;
+        $scope.underDisplay += '' + x;
         $scope.underData = parseFloat($scope.underDisplay);
-        }
     };
+        
     //display changes when user click +
-    $scope.sumButton = function() {
-        $scope.opr = '+';
-        $scope.save();
+    $scope.addButton = function() {
+        $scope.equalButton();
+        $scope.opr = '+';        
+        $scope.underData = 0;
+        $scope.upperData = parseFloat($scope.underDisplay);
+        $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
     
     //display changes when user click -
     $scope.subButton = function() {
+        $scope.equalButton();
         $scope.opr = '-';
-        $scope.save();
+        $scope.underData = 0;
+        $scope.upperData = $scope.underDisplay;
+        $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
     
     //display changes when user click x
     $scope.mulButton = function() {
+        $scope.equalButton();
         $scope.opr = '*';
-        $scope.save();
+        $scope.underData = 0;
+        $scope.upperData = $scope.underDisplay;
+        $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
     
     //display changes when user click /
     $scope.divButton = function() {
+        $scope.equalButton();
         $scope.opr = '/';
-        $scope.save();
+        $scope.underData = 0;
+        $scope.upperData = $scope.underDisplay;
+        $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
     
@@ -49,6 +57,7 @@ app.controller('myCtrl', function($scope) {
         $scope.upperDisplay = '';
         $scope.underData = 0;
         $scope.underDisplay = '';
+        $scope.opr = '';
     };
     
     //display changes when user click .
@@ -65,10 +74,10 @@ app.controller('myCtrl', function($scope) {
     //display changes when user click +/-
     $scope.pos_negButton = function() {
         if ($scope.underDisplay > 0) {
-            $scope.underData = -Math.abs($scope.underData);
+            $scope.underData = -Math.abs($scope.underDisplay);
             $scope.underDisplay = parseFloat($scope.underData);
-        }else if ($scope.underData < 0) {
-            $scope.underData = Math.abs($scope.underData);
+        }else if ($scope.underDisplay < 0) {
+            $scope.underData = Math.abs($scope.underDisplay);
             $scope.underDisplay = Math.abs($scope.underData);
         }else {}      
     };
@@ -84,6 +93,36 @@ app.controller('myCtrl', function($scope) {
         return x * y;
     };
     $scope.divide = function(x, y) {
-        return (y === 0) ? 'Cannot divide by 0' : x / y;
+        if(y === 0) {
+            $scope.clrButton();
+            alert('Cannot divide by 0');
+        } else {
+            return   x / y;
+        };
+        
+    };    
+    
+    //square function
+    $scope.power = function() {
+        $scope.underData = Math.pow($scope.underData, 2);
+        $scope.underDisplay = $scope.underData;
     };
+        
+    //display result 
+    $scope.equalButton = function() {
+        $scope.upperDisplay = '';
+        $scope.underDisplay = '';
+        if($scope.opr === '+') {
+            return $scope.underDisplay = $scope.sum($scope.upperData, $scope.underData);
+        }else if($scope.opr === '-') {
+            return $scope.underDisplay = $scope.subtract($scope.upperData, $scope.underData);
+        }else if($scope.opr === '*') {
+            return $scope.underDisplay = $scope.multiply($scope.upperData, $scope.underData);
+        }else if($scope.opr === '/') {
+            return $scope.underDisplay = $scope.divide($scope.upperData, $scope.underData); 
+        }else {
+            return $scope.underDisplay = $scope.underData;
+        };
+    };
+ 
 });
