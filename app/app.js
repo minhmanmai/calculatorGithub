@@ -124,8 +124,5 @@ app.controller('myCtrl', function($scope) {
         }else {
             return $scope.underDisplay = $scope.underData;
         };
-    }; 
-    $scope.test= function(){
-        return eval('23423-34534/345345*234293');
     };
 });
