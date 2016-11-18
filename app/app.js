@@ -45,7 +45,7 @@ app.controller('myCtrl', function($scope) {
     $scope.divButton = function() {
         $scope.equalButton();
         $scope.opr = '/';
-        $scope.underData = 0;
+        $scope.underData = 1;
         $scope.upperData = parseFloat($scope.underDisplay);
         $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
@@ -79,7 +79,8 @@ app.controller('myCtrl', function($scope) {
         }else if ($scope.underDisplay < 0) {
             $scope.underData = Math.abs($scope.underDisplay);
             $scope.underDisplay = Math.abs($scope.underData);
-        }else {}      
+        }else {}  
+        $scope.upperData = $scope.underDisplay;
     };
     
     //calculating functions
