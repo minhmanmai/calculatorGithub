@@ -95,10 +95,10 @@ app.controller('myCtrl', function($scope) {
     };
     $scope.divide = function(x, y) {
         if(y === 0) {
-            $scope.clrButton();
-            alert('Cannot divide by 0');
+            location.reload();
+            return alert('Cannot divide by 0');
         } else {
-            return   x / y;
+            return x / y;
         };        
     };    
     
