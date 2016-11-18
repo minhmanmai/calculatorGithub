@@ -1,3 +1,3 @@
 # calculatorGithub
-This is an web application of calculator
+Calculator web application using AngularJS<br/>
 Developed by Minh Mai
