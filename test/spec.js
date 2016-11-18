@@ -2,36 +2,36 @@ var app = angular.module('myApp', []);
 
 app.controller('MyController', function($scope) {
     
-    //sum function to be tested
-    $scope.sum = function(x, y) {
+    //add function to be tested
+    $scope.add = function(x, y) {
         return x + y;
     };
     
-    //subtract function to be tested
-    $scope.subtract = function(x, y) {
+    //sub function to be tested
+    $scope.sub = function(x, y) {
         return x - y;
     };
     
-    //multiply function to be tested
-    $scope.multiply = function(x, y) {
+    //mul function to be tested
+    $scope.mul = function(x, y) {
         return x * y;
     };
     
-    //divide function to be tested
-    $scope.divide = function(x, y) {
+    //div function to be tested
+    $scope.div = function(x, y) {
         return (y === 0) ? 'Error' : x / y;
     };
     
     //function to display result when user click =
     $scope.equal = function(x, opr, y) {
         if(opr === '+') {
-            return $scope.sum(x, y);
+            return $scope.add(x, y);
         }else if(opr === '-') {
-            return $scope.subtract(x, y);            
+            return $scope.sub(x, y);            
         }else if(opr === '*') {
-            return $scope.multiply(x, y);
+            return $scope.mul(x, y);
         }else if(opr === '/') {
-            return $scope.divide(x, y);            
+            return $scope.div(x, y);            
         };
     };
     
@@ -50,40 +50,40 @@ describe('myController function', function() {
             $controller('MyController', {$scope: $scope});
         }));
         
-        //test sum function
+        //test add function
         it('should be defined & add 2 numbers correctly', function() {
-            expect($scope.sum()).toBeDefined();
-            expect($scope.sum(2, 3)).toBe(5);
-            expect($scope.sum(-2, -3)).toBeLessThan(0);
-            expect($scope.sum(-2, 3)).toBeGreaterThan(0);
-            expect($scope.sum(2, -3)).toBeLessThan(0);
+            expect($scope.add()).toBeDefined();
+            expect($scope.add(2, 3)).toBe(5);
+            expect($scope.add(-2, -3)).toBeLessThan(0);
+            expect($scope.add(-2, 3)).toBeGreaterThan(0);
+            expect($scope.add(2, -3)).toBeLessThan(0);
         });
         
-        //test subtract function
-        it('should be defined & subtract 2 number correctly', function() {
-            expect($scope.subtract()).toBeDefined();
-            expect($scope.subtract(5, 3)).toBe(2);
-            expect($scope.subtract(3, 5)).toBeLessThan(0);
-            expect($scope.subtract(-3, 5)).toBeLessThan(0);
-            expect($scope.subtract(-3, -5)).toBeGreaterThan(0);
-            expect($scope.subtract(3, -5)).toBeGreaterThan(0);
+        //test sub function
+        it('should be defined & sub 2 number correctly', function() {
+            expect($scope.sub()).toBeDefined();
+            expect($scope.sub(5, 3)).toBe(2);
+            expect($scope.sub(3, 5)).toBeLessThan(0);
+            expect($scope.sub(-3, 5)).toBeLessThan(0);
+            expect($scope.sub(-3, -5)).toBeGreaterThan(0);
+            expect($scope.sub(3, -5)).toBeGreaterThan(0);
         });
         
-        //test multiply function
-        it('should be defined & multiply 2 number correctly', function() {
-            expect($scope.multiply()).toBeDefined();
-            expect($scope.multiply(2, 3)).toBe(6);
-            expect($scope.multiply(-2, 3)).toBeLessThan(0);
-            expect($scope.multiply(-2, -3)).toBeGreaterThan(0);
+        //test mul function
+        it('should be defined & mul 2 number correctly', function() {
+            expect($scope.mul()).toBeDefined();
+            expect($scope.mul(2, 3)).toBe(6);
+            expect($scope.mul(-2, 3)).toBeLessThan(0);
+            expect($scope.mul(-2, -3)).toBeGreaterThan(0);
         });
         
-        //test divide function
-        it('should be defined & divide 2 number correctly', function() {
-            expect($scope.divide()).toBeDefined();
-            expect($scope.divide(6, 3)).toBe(2);
-            expect($scope.divide(6, 0)).toBe('Error');
-            expect($scope.divide(3, 6)).toBeLessThan(1);
-            expect($scope.divide(0, 6)).toBe(0);
+        //test div function
+        it('should be defined & div 2 number correctly', function() {
+            expect($scope.div()).toBeDefined();
+            expect($scope.div(6, 3)).toBe(2);
+            expect($scope.div(6, 0)).toBe('Error');
+            expect($scope.div(3, 6)).toBeLessThan(1);
+            expect($scope.div(0, 6)).toBe(0);
         });
         
         //test = function
