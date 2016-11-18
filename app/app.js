@@ -79,8 +79,9 @@ app.controller('myCtrl', function($scope) {
         }else if ($scope.underDisplay < 0) {
             $scope.underData = Math.abs($scope.underDisplay);
             $scope.underDisplay = Math.abs($scope.underData);
-        }else {}  
-        $scope.upperData = $scope.underDisplay;
+        }else {  
+            $scope.upperData = $scope.underDisplay;
+        };
     };
     
     //calculating functions
