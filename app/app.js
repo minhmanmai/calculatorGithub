@@ -26,7 +26,7 @@ app.controller('myCtrl', function($scope) {
         $scope.equalButton();
         $scope.opr = '-';
         $scope.underData = 0;
-        $scope.upperData = $scope.underDisplay;
+        $scope.upperData = parseFloat($scope.underDisplay);
         $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
@@ -36,7 +36,7 @@ app.controller('myCtrl', function($scope) {
         $scope.equalButton();
         $scope.opr = '*';
         $scope.underData = 0;
-        $scope.upperData = $scope.underDisplay;
+        $scope.upperData = parseFloat($scope.underDisplay);
         $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
@@ -46,7 +46,7 @@ app.controller('myCtrl', function($scope) {
         $scope.equalButton();
         $scope.opr = '/';
         $scope.underData = 0;
-        $scope.upperData = $scope.underDisplay;
+        $scope.upperData = parseFloat($scope.underDisplay);
         $scope.upperDisplay = $scope.upperData + '' + $scope.opr;   
         $scope.underDisplay = '';
     };
@@ -123,4 +123,7 @@ app.controller('myCtrl', function($scope) {
             return $scope.underDisplay = $scope.underData;
         };
     }; 
+    $scope.test= function(){
+        return eval('23423-34534/345345*234293');
+    };
 });
